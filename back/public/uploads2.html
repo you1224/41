@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="file" name="" id="files">
+
+    </form>
+    <div></div>
+
+    <script>
+        /* 
+        图片上传：
+        1、获取选中的文件
+        2、需要将选中的文件传到服务器端
+        3、显示图片在浏览器上===img.src=图片在服务器端的所在地址
+        */
+
+        var files = document.querySelector('#files')
+        files.onchange = function () {
+            //console.log(this.files[0],123);
+
+            /* 
+            传递参数需要借助formData对象
+            */
+            var formData = new FormData()
+            formData.set('attrName', this.files[0])
+
+            var xhr = new XMLHttpRequest()
+            xhr.open('post', 'http://127.0.0.1:2000/upload')
+            xhr.send(formData)
+            xhr.onload = function () {
+                console.log(typeof xhr.responseText, 9999);
+                var img = document.createElement('img')
+                img.src = JSON.parse(xhr.responseText).path
+
+                var div=document.querySelector('div')
+                div.appendChild(img)
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

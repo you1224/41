@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/template-web.js"></script>
+
+
+</head>
+
+<body>
+    我是异步对象i xml
+
+    对象=====三要素：属性+方法+事件（回调函数）
+
+    <ul>
+
+    </ul>
+    <!-- 
+        art-template的使用=====插件
+        使用插件三步走
+        1、引入插件文件+css+fonts
+        2、定义模板
+        简洁写法
+             {{each arr  item key}}
+                <li>{{item.id}}====={{item.name}}======{{key}}</li>
+            {{/each}}
+        3、渲染模板
+     -->
+
+    <!-- 
+    2、定义模板
+    arr.forEach((item,index)=>{})
+ -->
+    <script type='text/html' id='tpl'>
+        <% for(var i=0;i< arr.length ;i++){%>
+            <li><%=arr[i].id%>===<%=arr[i].name%>===<%=i%></li>
+        <%}%>
+ </script>
+
+    <script>
+        var xml = new XMLHttpRequest()
+        console.log(xml,4444);
+        
+        xml.open('get', 'http://127.0.0.1:2000/province')
+        xml.send()
+        xml.onload = function () {
+            console.log(xml.responseText, 1111);
+            //3、渲染模板 template(模板id,对象)
+            var html = template('tpl', { arr: JSON.parse(xml.responseText) })
+            console.log(html, 2233);
+
+            var uls = document.querySelector('ul')
+
+            uls.innerHTML = html
+        }
+    </script>
+</body>
+
+</html>

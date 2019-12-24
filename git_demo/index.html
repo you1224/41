@@ -1,0 +1,54 @@
+git   必须记住指令
+
+
+git  add  .                    =====将文件放到暂存区【去机场】
+git  commit  -m  '这里写注释'   ======将文件提交到仓库区【登机】
+git  status                     ======这个是检查当前工作区文件的状态
+git  log                        ======git  提交记录查看
+git  reflog                     ======查看简洁版的提交记录
+git  checkout  文件名           =======撤销到上一次提交的记录处
+git  reset  --hard  id===git  reset  --hard  head~索引    ====执行了add +  commit  后再撤销
+git  rm --cache  文件名         =======删除暂存区的文件【取消add执行的操作】
+
+git   branch       ======查看分支
+git  branch  分支名【名字可以自定义】     ======创建分支
+git  checkout  分支名                   ======切换分支
+git  merge   分支名【名字可以自定义】     ======合并分支
+
+git   clone   远程仓库地址              =====克隆远程仓库地址中的项目
+
+git   push  仓库地址   分支名           ======将本地仓库中的代码提交到远程仓库
+git  pull   仓库地址   分支名           ======将远程仓库地址拉到本地   【补充：只要是往远程仓库库提交代码先  git  pull】
+
+
+git   remote  add  别名【就是给远程仓库地址起一个小名】 远程仓库地址
+
+git  push 别名
+
+git push  -u  别名 =====配置之后 后续提交只需要git push 
+
+步骤说明:
+1、github官网创建一个仓库
+2、克隆远程仓库到本地  git  clone  远程仓库地址
+3、本地编写代码
+4、本地add +commit +  git push
+
+
+注意：
+1、一个项目有且只能有一个 .git文件
+2、提交文件需要在有.git文件的同级目录下提交
+
+
+master===写代码不允许在master分支中写=====因为他是上线版的分支====学技术负责人操作
+
+
+dev==开发版的分支
+
+aa
+bb
+
+
+
+
+=======================
+我是dev分支中的说明=====我在dev分支中写的

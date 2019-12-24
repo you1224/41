@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        用户名：<input type="text" name="username" id="user" placeholder="请输入内容"> </br>
+        密码：<input type="text" name="password" id="pwd" placeholder="请输入密码"> </br>
+        <input type="button" value="登录" id='btn'>
+    </form>
+
+    <script>
+        var btn = document.querySelector("#btn")
+        var user = document.querySelector("#user")
+        var pwd = document.querySelector("#pwd")
+        btn.onclick = function () {
+            var xml = new XMLHttpRequest()
+            //序列化=====  username=jack&password=123
+            var uVal = user.value
+            var uPwd = pwd.value
+            // console.log(uVal,uPwd,777);
+           // var str = `username=${uVal}&password=${uPwd}`
+             var formData=new  FormData()
+             console.log(formData,888);
+             formData.set('username',uVal)
+             formData.set('password',uPwd)
+            //console.log(str,222);
+             
+            xml.open('post', 'http://127.0.0.1:2000/formData')
+             //xml.setRequestHeader('content-type', 'application/x-www-form-urlencoded')
+
+            xml.send(formData)
+            xml.onload = function () {
+                console.log(xml.responseText, 1111);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
